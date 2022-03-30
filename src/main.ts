@@ -19,4 +19,4 @@ async function bootstrap() {
 }
 
 bootstrap();
-// git@github.com:gideonmensadappah/lsCrm-server.git
+//
