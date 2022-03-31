@@ -67,17 +67,18 @@ export class EmployeeService {
 
   async update(id: string, updateEmployeeDto: UpdateEmployeeDto) {
     try {
-      const removedEmplyee = await this.emplyeeModel.updateOne(
+      const { _id, ...rest }: any = updateEmployeeDto;
+      const updateEmplyee = await this.emplyeeModel.findOneAndUpdate(
         {
           _id: new ObjectId(id),
         },
-        updateEmployeeDto,
+        rest,
       );
 
-      if (!removedEmplyee) throw 'server was not able to update';
+      if (!updateEmplyee) throw new Error('server was not able to update');
 
       return {
-        data: removedEmplyee,
+        data: updateEmplyee,
         status: 200,
       };
     } catch (err) {
@@ -94,7 +95,7 @@ export class EmployeeService {
         _id: new ObjectId(id),
       });
 
-      if (!removedEmplyee) throw 'server was not able to delete';
+      if (!removedEmplyee) throw new Error('server was not able to delete');
 
       return {
         data: removedEmplyee,
