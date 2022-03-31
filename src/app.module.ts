@@ -19,6 +19,7 @@ import { AuthService } from './routes/auth/auth.service';
       ttl: 60,
       limit: 10,
     }),
+
     MongooseModule.forRoot(
       `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@realmcluster.jtvpg.mongodb.net/${process.env.LS_BASE_DB}?retryWrites=true&w=majority`,
       {

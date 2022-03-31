@@ -30,6 +30,7 @@
     "@nestjs/platform-express": "^8.0.0",
     "@nestjs/throttler": "^2.0.1",
     "cookie-parser": "^1.4.6",
+    "firebase-admin": "^10.0.2",
     "mongodb": "^4.4.1",
     "mongoose": "^6.2.9",
     "passport-jwt": "^4.0.0",
