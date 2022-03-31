@@ -18,8 +18,16 @@ export class EmployeeService {
 
   async create(createEmployeeDto: CreateEmployeeDto) {
     try {
+      const findUser = await this.emplyeeModel.findOne({
+        email: createEmployeeDto.email,
+        password: createEmployeeDto.password,
+      });
+
+      if (findUser) throw new Error('cant use thie email and password!');
+
       const newEmplyee = await new this.emplyeeModel({
         _id: new Types.ObjectId(),
+        email: createEmployeeDto.email.toLowerCase(),
         ...createEmployeeDto,
       }).save();
 
